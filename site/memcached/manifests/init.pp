@@ -1,5 +1,5 @@
 class memcached {
-      package { 'memchached':
+      package { 'memcached':
         ensure => present,
       }
       file { '/etc/sysconfig/memcached':
