@@ -7,7 +7,7 @@ class skeleton {
 
 }
 
-file {'etc/skel/.bashrc':
+file {'/etc/skel/.bashrc':
  ensure => file,
  owner => 'root',
  group => '0644',
