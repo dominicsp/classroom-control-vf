@@ -39,6 +39,7 @@ class nginx {
     group => 'root',
     mode => '0644',
     }
+  # fixed syntax error 
   
    file {'etc/nginx/conf.d/default.conf':
     ensure => file,
