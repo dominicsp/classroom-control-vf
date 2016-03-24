@@ -1,4 +1,32 @@
-class nginx {
+class nginx (
+  
+  $root =undef,
+) {
+case $::osfamily {
+  'redhat','debian': {
+  $package = 'nginx'
+  $owner = 'root'
+  $group = 'root'
+  $docroot = '/var/www'
+  $confdir = '/etc/nginx'
+  $logdir = '/var/log/nginx'
+  
+  $default_docroot ='/var/www'
+  }
+  'windows' :(
+  $package = 'nginx-service'
+  $owner = 'Administrator'
+  $group = 'Administrators'
+  $docroot = 'C:/ProgramData/nginx/html'
+  $confdir = 'C:/ProgramData/nginx'
+  $logdir = 'C:/ProgramData/nginx/logs'
+  
+  $default_docroot ='C:/ProgramData/nginx/html'
+  }
+  default :{
+    fail ("module ${module_name} is not supported on ${::osfamily}")
+  }
+}
   
   # package nginx
   
