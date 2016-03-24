@@ -52,4 +52,13 @@ node default {
   
   include users
   include skeleton
+  
+  node default {
+  # Hiera
+  
+  $message =hiera('message')
+  notify { $message: }
+  
+  }
+  
 }
