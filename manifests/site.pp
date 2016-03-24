@@ -42,6 +42,13 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
+   
+  
+  $my_message =hiera('message')
+  notify { $my_message: }
+  
+
+  
   notify { "Hello, India, my name is ${::hostname}": }
   
   exec { 'please work':
@@ -53,12 +60,6 @@ node default {
   include users
   include skeleton
   
-  node default {
-  # Hiera
-  
-  $message =hiera('message')
-  notify { $message: }
-  
-  }
+ 
   
 }
